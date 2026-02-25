@@ -17,14 +17,11 @@ var gameInitialized = false;
 var audioEnabled = false;
 var userHasInteracted = false;
 
-var baseGravity = 0.25;
-var baseJump = -4.6;
-var originalFlyAreaHeight = 420;
-var gravity = baseGravity;
+var gravity = 0.25;
 var velocity = 0;
 var position = 180;
 var rotation = 0;
-var jump = baseJump;
+var jump = -4.6;
 var flyArea;
 
 var score = 0;
@@ -124,11 +121,7 @@ function initializeGame() {
    gameInitialized = true;
    flyArea = $("#flyarea").height();
    
-   // Scale physics to container size (original design was 420px flyarea)
-   var scale = flyArea / originalFlyAreaHeight;
-   gravity = baseGravity * scale;
-   jump = baseJump * scale;
-   position = 180 * scale;
+   console.log("[game] flyArea=" + flyArea + " containerHeight=" + $("#gamecontainer").height() + " screenHeight=" + $("#gamescreen").height());
    
    if(window.location.search == "?debug")
       debugmode = true;
@@ -175,7 +168,7 @@ function showSplash(playSound = true)
 
    //set the defaults (again)
    velocity = 0;
-   position = 180 * (flyArea / originalFlyAreaHeight);
+   position = 180;
    rotation = 0;
    score = 0;
 
@@ -235,8 +228,10 @@ function updatePlayer(player)
    //rotation
    rotation = Math.min((velocity / 10) * 90, 90);
 
-   //apply rotation and position
-   $(player).css({ rotate: rotation, top: position });
+   //apply rotation and position (use direct style to avoid transit transitions)
+   var el = player[0] || player;
+   el.style.top = position + "px";
+   el.style.transform = "rotate(" + rotation + "deg)";
 }
 
 function gameloop() {
