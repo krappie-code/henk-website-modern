@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Henk van Jaarsveld - Technology Leader specializing in building high-performance teams and bridging technical, product, and people spaces.">
-    <meta name="keywords" content="Henk van Jaarsveld, Technology Leader, Engineering Director, Team Building, Technical Leadership, Agentic Commerce, Financial Technology">
+    <meta name="description" content="Henk van Jaarsveld - Director of Engineering at Stitch, building and maintaining high-performance teams through strategic team scaling and engineering leadership.">
+    <meta name="keywords" content="Henk van Jaarsveld, Director of Engineering, Engineering Leadership, Team Scaling, High-Performance Teams, Stitch, Financial Technology">
     <meta name="author" content="Henk van Jaarsveld">
     
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Henk van Jaarsveld - Technology Leader & Team Builder">
-    <meta property="og:description" content="Technology Leader specializing in building high-performance teams and bridging technical, product, and people spaces.">
+    <meta property="og:title" content="Henk van Jaarsveld - Director of Engineering & Team Builder">
+    <meta property="og:description" content="Director of Engineering at Stitch, building and maintaining high-performance teams through strategic team scaling and engineering leadership.">
     <meta property="og:url" content="">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Henk van Jaarsveld - Technology Leader & Team Builder">
-    <meta name="twitter:description" content="Technology Leader specializing in building high-performance teams and bridging technical, product, and people spaces.">
+    <meta name="twitter:title" content="Henk van Jaarsveld - Director of Engineering & Team Builder">
+    <meta name="twitter:description" content="Director of Engineering at Stitch, building and maintaining high-performance teams through strategic team scaling and engineering leadership.">
     
-    <title>Henk van Jaarsveld - Technology Leader & Team Builder</title>
+    <title>Henk van Jaarsveld - Director of Engineering & Team Builder</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -26,8 +26,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     
-    <!-- Stylesheet -->
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game/css/reset.css" media="screen and (min-width: 320px)">
+    <link rel="stylesheet" href="game/css/main.css" media="screen and (min-width: 320px)">
     
     <!-- Preload critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,11 +63,11 @@
             <div class="container">
                 <div class="hero-content">
                     <h1 id="hero-heading" class="hero-title">
-                        Technology Leader & Team Builder
+                        Director of Engineering & Team Builder
                     </h1>
                     <p class="hero-subtitle">
-                        Specializing in building high-performance teams and bridging technical, product, and people spaces. 
-                        Proven track record of empowering teams to build products, not just technology.
+                        Director of Engineering at Stitch, building and maintaining high-performance teams. 
+                        Leading team growth from small startup to scale-up phase, continuing expansion through strategic engineering leadership.
                     </p>
                     <div class="hero-actions">
                         <a href="#experience" class="btn btn-primary">View Experience</a>
@@ -81,9 +83,9 @@
                 <div class="about-content">
                     <div class="about-text">
                         <p class="lead">
-                            Experienced Technology Leader with 10+ years of building and scaling high-performance teams 
-                            across financial technology, IoT, and transportation industries. Expert at bridging the gap 
-                            between technical execution, product strategy, and people development.
+                            Experienced Director of Engineering with 10+ years of building and scaling high-performance teams 
+                            across financial technology, IoT, and transportation industries. Expert at team scaling, 
+                            performance optimization, and engineering leadership during critical growth phases.
                         </p>
                         <div class="summary-highlights">
                             <div class="summary-item">
@@ -130,18 +132,18 @@
                                 <h3 class="experience-title">Stitch</h3>
                                 <span class="experience-duration">2019 - Present • 5+ Years</span>
                             </div>
-                            <span class="experience-role">Technology Leader</span>
+                            <span class="experience-role">Director of Engineering</span>
                         </div>
                         <div class="experience-tags">
-                            <span class="tag">Agentic Commerce</span>
-                            <span class="tag">Financial Technology</span>
-                            <span class="tag">Team Leadership</span>
+                            <span class="tag">Team Scaling</span>
+                            <span class="tag">Performance Optimization</span>
+                            <span class="tag">Engineering Leadership</span>
                         </div>
                         <div class="experience-description">
                             <p>
-                                Leading technology strategy and team development at Stitch, focusing on agentic commerce 
-                                and financial technology solutions. Responsible for architectural decisions, team scaling, 
-                                and bridging technical execution with business objectives.
+                                Director of Engineering at Stitch, building and maintaining high-performance teams. 
+                                Leading team growth from small startup to scale-up phase, continuing expansion through 
+                                strategic engineering leadership and performance optimization initiatives.
                             </p>
                             <div class="experience-achievements">
                                 <h4 class="achievements-title">Key Achievements & Impact</h4>
@@ -394,26 +396,33 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-game">
-                    <h3 class="footer-game-title">Creative Side Project</h3>
-                    <p class="footer-game-description">
-                        Beyond technology leadership, I enjoy exploring creative coding projects. 
-                        Check out "Floppy Bird" – a fun game showcasing technical creativity and problem-solving skills.
-                    </p>
-                    <div class="game-container">
-                        <iframe 
-                            src="https://epictroll.henkvanjaarsveld.com/" 
-                            width="100%" 
-                            height="400" 
-                            title="Floppy Bird Game - Technical Creativity Showcase"
-                            frameborder="0"
-                            loading="lazy">
-                        </iframe>
+                    <!-- Integrated Floppy Bird Game -->
+                    <div id="gamecontainer" class="footer-gamecontainer">
+                        <div id="gamescreen">
+                            <div id="sky" class="animated">
+                                <div id="flyarea">
+                                    <div id="ceiling" class="animated"></div>
+                                    <div id="player" class="bird animated"></div>
+                                    <div id="bigscore"></div>
+                                    <div id="splash"></div>
+                                    <div id="scoreboard">
+                                        <div id="medal"></div>
+                                        <div id="currentscore"></div>
+                                        <div id="highscore"></div>
+                                        <div id="replay"><img src="game/assets/replay.png" alt="replay"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="land" class="animated"><div id="debug"></div></div>
+                        </div>
                     </div>
+                    <div class="boundingbox" id="playerbox"></div>
+                    <div class="boundingbox" id="pipebox"></div>
                 </div>
                 
                 <div class="footer-info">
                     <p class="footer-text">
-                        &copy; 2026 Henk van Jaarsveld. Technology Leader & Team Builder.
+                        &copy; 2026 Henk van Jaarsveld. Director of Engineering & Team Builder.
                     </p>
                     <p class="footer-credit">
                         Crafted with modern web standards • Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
@@ -424,5 +433,11 @@
     </footer>
 
     <script src="script.js"></script>
+    
+    <!-- Game Scripts -->
+    <script src="game/js/jquery.min.js"></script>
+    <script src="game/js/jquery.transit.min.js"></script>
+    <script src="game/js/buzz.min.js"></script>
+    <script src="game/js/main.js"></script>
 </body>
 </html>

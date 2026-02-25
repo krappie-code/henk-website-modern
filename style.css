@@ -22,17 +22,27 @@
     --color-border: #e2e8f0;
     --color-border-light: #f1f5f9;
     
-    /* Typography */
-    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-base: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-xl: 1.25rem;
-    --font-size-2xl: 1.5rem;
-    --font-size-3xl: 1.875rem;
-    --font-size-4xl: 2.25rem;
-    --font-size-5xl: 3rem;
+    /* Typography - Industry Standards */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-size-xs: 0.75rem;     /* 12px */
+    --font-size-sm: 0.875rem;    /* 14px */
+    --font-size-base: 1rem;      /* 16px */
+    --font-size-lg: 1.125rem;    /* 18px */
+    --font-size-xl: 1.25rem;     /* 20px */
+    --font-size-2xl: 1.5rem;     /* 24px - H3 */
+    --font-size-3xl: 2rem;       /* 32px - H2 */
+    --font-size-4xl: 2.5rem;     /* 40px - H1 Desktop */
+    --font-size-5xl: 3rem;       /* 48px - H1 Large */
+    
+    /* Line Heights - Industry Standards */
+    --line-height-tight: 1.2;    /* Headings */
+    --line-height-normal: 1.4;   /* UI Elements */
+    --line-height-relaxed: 1.6;  /* Body Text */
+    --line-height-loose: 1.8;    /* Large Text */
+    
+    /* Content Width - Optimal Readability */
+    --content-width: 65ch;        /* 65-75 characters per line */
+    --content-width-narrow: 50ch; /* For larger text */
     
     /* Spacing */
     --space-1: 0.25rem;
@@ -68,20 +78,31 @@
     --transition-slow: 350ms ease;
 }
 
-/* Base Typography */
+/* Base Typography - Industry Standards */
 html {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 16px; /* 1rem base */
     scroll-behavior: smooth;
 }
 
 body {
     font-family: var(--font-family);
+    font-size: var(--font-size-base);
     color: var(--color-text-primary);
     background-color: var(--color-background);
-    line-height: 1.6;
+    line-height: var(--line-height-relaxed);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
+}
+
+/* Professional Content Width */
+.content-width {
+    max-width: var(--content-width);
+}
+
+.content-width-narrow {
+    max-width: var(--content-width-narrow);
 }
 
 /* Container */
@@ -971,12 +992,171 @@ section {
     }
 }
 
+/* Game Integration Styles */
+.footer-gamecontainer {
+    position: relative;
+    width: 100%;
+    max-width: 432px;
+    margin: 0 auto var(--space-8) auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    background-color: var(--color-background);
+}
+
+/* Scope game styles to avoid conflicts */
+.footer-game #gamecontainer {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 0;
+    cursor: pointer;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.footer-game #gamescreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive game scaling */
+@media (max-width: 768px) {
+    .footer-gamecontainer {
+        max-width: 300px;
+    }
+    
+    .footer-game #gamecontainer {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-gamecontainer {
+        max-width: 280px;
+        border-radius: var(--radius-md);
+    }
+    
+    .footer-game #gamecontainer {
+        height: 280px;
+        border-radius: var(--radius-md);
+    }
+}
+
+/* Game bounding boxes - hide in production */
+.footer-game .boundingbox {
+    display: none;
+}
+
+/* Ensure game doesn't interfere with site styles */
+.footer-game * {
+    box-sizing: initial;
+}
+
+.footer-game #gamecontainer * {
+    position: absolute;
+}
+
+/* Professional button improvements */
+.btn {
+    font-weight: 500;
+    font-size: var(--font-size-base);
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px; /* Touch target size */
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Industry-standard heading hierarchy */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: var(--line-height-tight);
+    margin-bottom: 0.5em;
+    font-feature-settings: "kern" 1;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: var(--font-size-4xl);
+}
+
+h2 {
+    font-size: var(--font-size-3xl);
+}
+
+h3 {
+    font-size: var(--font-size-2xl);
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: var(--font-size-5xl);
+    }
+}
+
+/* Improved content sections with proper width */
+.about-content,
+.leadership-item,
+.contact-description {
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-text p {
+    max-width: var(--content-width);
+    margin-bottom: 1.5rem;
+}
+
+/* Enhanced contrast for better readability */
+:root {
+    --color-text-primary: #1a202c;
+    --color-text-secondary: #4a5568;
+    --color-text-light: #718096;
+}
+
 /* Print styles */
 @media print {
     .header,
     .nav-toggle,
     .hero-actions,
-    .contact-methods {
+    .contact-methods,
+    .footer-game {
         display: none;
     }
     
