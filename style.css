@@ -1016,6 +1016,18 @@ section {
     position: absolute;
 }
 
+/* Critical: Prevent game from breaking page scrolling */
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto !important; /* Force scrolling to work */
+}
+
+/* Isolate game container completely */
+.footer-game #gamecontainer {
+    isolation: isolate;
+    contain: layout style paint;
+}
+
 /* Professional button improvements */
 .btn {
     font-weight: 500;

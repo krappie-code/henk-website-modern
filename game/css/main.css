@@ -120,8 +120,9 @@
    user-select: none;
 }
 
-html,
-body
+/* Scoped to game container only - don't break main page scrolling */
+#gamecontainer,
+#gamecontainer body
 {
    height: 100%;
    overflow: hidden;
