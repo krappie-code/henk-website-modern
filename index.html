@@ -28,8 +28,29 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="game/css/reset.css" media="screen and (min-width: 320px)">
-    <link rel="stylesheet" href="game/css/main.css" media="screen and (min-width: 320px)">
+    <!-- Game CSS - loaded after main style.css so our overrides win -->
+    <link rel="stylesheet" href="game/css/reset.css">
+    <link rel="stylesheet" href="game/css/main.css">
+    
+    <!-- Override game's destructive global styles -->
+    <style>
+        /* Game reset.css nukes body line-height; restore it */
+        body {
+            line-height: 1.6 !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+        }
+        /* Game main.css applies user-select:none to everything; undo outside game */
+        html, body, header, main, footer, section, div:not(#gamecontainer):not(#gamecontainer *) {
+            -webkit-user-select: auto !important;
+            user-select: auto !important;
+            -webkit-touch-callout: default !important;
+        }
+        /* Ensure game container doesn't break document flow */
+        #gamecontainer {
+            contain: layout style paint;
+        }
+    </style>
     
     <!-- Preload critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -396,7 +417,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-game">
-                    <!-- Integrated Floppy Bird Game -->
+                    <!-- Game CSS scoped to #gamecontainer to avoid breaking page scrolling -->
+                    <style>
+                        #gamecontainer, #gamecontainer * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+                        #gamecontainer { position: relative; width: 100%; height: 100%; min-height: 525px; overflow: hidden; font-family: monospace; font-size: 12px; color: #fff; }
+                    </style>
                     <div id="gamecontainer" class="footer-gamecontainer">
                         <div id="gamescreen">
                             <div id="sky" class="animated">
