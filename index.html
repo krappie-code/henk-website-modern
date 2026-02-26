@@ -28,26 +28,7 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
-    <!-- Game CSS - loaded after main style.css so our overrides win -->
-    <link rel="stylesheet" href="game/css/reset.css">
-    <link rel="stylesheet" href="game/css/main.css">
-    
-    <!-- Override game's destructive global styles -->
-    <style>
-        /* Game reset.css nukes body line-height; restore it */
-        body {
-            line-height: 1.6 !important;
-            overflow-y: auto !important;
-            overflow-x: hidden !important;
-        }
-        /* Game main.css applies user-select:none to everything; undo outside game */
-        html, body, header, main, footer, section, div:not(#gamecontainer):not(#gamecontainer *) {
-            -webkit-user-select: auto !important;
-            user-select: auto !important;
-            -webkit-touch-callout: default !important;
-        }
-        /* Let game CSS handle its own layout - no containment override */
-    </style>
+    <!-- Game runs in isolated iframe - no game CSS needed on main page -->
     
     <!-- Preload critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -414,27 +395,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-game">
-                    <div id="gamecontainer" class="footer-gamecontainer">
-                        <div id="gamescreen">
-                            <div id="sky" class="animated">
-                                <div id="flyarea">
-                                    <div id="ceiling" class="animated"></div>
-                                    <div id="player" class="bird animated"></div>
-                                    <div id="bigscore"></div>
-                                    <div id="splash"></div>
-                                    <div id="scoreboard">
-                                        <div id="medal"></div>
-                                        <div id="currentscore"></div>
-                                        <div id="highscore"></div>
-                                        <div id="replay"><img src="game/assets/replay.png" alt="replay"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="land" class="animated"><div id="debug"></div></div>
-                        </div>
-                    </div>
-                    <div class="boundingbox" id="playerbox"></div>
-                    <div class="boundingbox" id="pipebox"></div>
+                    <iframe src="game/index.html" 
+                            style="width: 100%; height: 500px; border: none; display: block;"
+                            title="Floppy Cat Game"
+                            loading="lazy"
+                            allow="autoplay"></iframe>
                 </div>
                 
                 <div class="footer-info">
@@ -451,10 +416,6 @@
 
     <script src="script.js"></script>
     
-    <!-- Game Scripts -->
-    <script src="game/js/jquery.min.js"></script>
-    <script src="game/js/jquery.transit.min.js"></script>
-    <script src="game/js/buzz.min.js"></script>
-    <script src="game/js/main-safe.js"></script>
+    <!-- Game runs in iframe, scripts loaded there -->
 </body>
 </html>

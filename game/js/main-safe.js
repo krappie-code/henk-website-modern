@@ -138,8 +138,13 @@ function initializeGame() {
 }
 
 $(document).ready(function() {
-   // Don't initialize game immediately - use lazy loading instead
-   setupLazyLoading();
+   // In iframe context, initialize directly. In embedded context, use lazy loading.
+   if (window.self !== window.top || !document.querySelector('.footer-game')) {
+      // We're in an iframe or standalone - init immediately
+      initializeGame();
+   } else {
+      setupLazyLoading();
+   }
 });
 
 function getCookie(cname)
