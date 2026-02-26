@@ -954,77 +954,30 @@ section {
 
 /* Game Integration Styles */
 .footer-game {
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+    margin-bottom: var(--space-8);
 }
 
-.footer-gamecontainer {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
-    overflow: hidden;
-    background-color: #000;
-}
-
-/* Scope game styles to avoid conflicts */
-.footer-game #gamecontainer {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    margin: 0;
-    cursor: pointer;
-    border-radius: 0;
-    overflow: hidden;
-}
-
-.footer-game #gamescreen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* Responsive game scaling */
-@media (max-width: 768px) {
-    .footer-game #gamecontainer {
-        height: 420px;
-    }
-}
-
-@media (max-width: 480px) {
-    .footer-game #gamecontainer {
-        height: 380px;
-    }
-}
-
-/* Game bounding boxes - hide in production */
 .footer-game .boundingbox {
     display: none;
 }
 
-/* Ensure game doesn't interfere with site styles */
-.footer-game * {
-    box-sizing: initial;
+/* Let the game's own CSS handle everything inside the container.
+   Only set the outer wrapper dimensions — do NOT override child styles. */
+.footer-gamecontainer {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    background-color: #4ec0ca;
 }
 
-.footer-game #gamecontainer * {
-    position: absolute;
-}
-
-/* Critical: Prevent game from breaking page scrolling */
+/* Prevent game from breaking page scrolling */
 html, body {
     overflow-x: hidden;
-    overflow-y: auto !important; /* Force scrolling to work */
-}
-
-/* Isolate game container completely */
-.footer-game #gamecontainer {
-    isolation: isolate;
-    contain: layout style paint;
+    overflow-y: auto !important;
 }
 
 /* Professional button improvements */

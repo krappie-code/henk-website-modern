@@ -121,7 +121,7 @@ function initializeGame() {
    gameInitialized = true;
    flyArea = $("#flyarea").height();
    
-   console.log("[game] flyArea=" + flyArea + " containerHeight=" + $("#gamecontainer").height() + " screenHeight=" + $("#gamescreen").height());
+   console.log("[game] flyArea=" + flyArea);
    
    if(window.location.search == "?debug")
       debugmode = true;
@@ -228,10 +228,8 @@ function updatePlayer(player)
    //rotation
    rotation = Math.min((velocity / 10) * 90, 90);
 
-   //apply rotation and position (use direct style to avoid transit transitions)
-   var el = player[0] || player;
-   el.style.top = position + "px";
-   el.style.transform = "rotate(" + rotation + "deg)";
+   //apply rotation and position
+   $(player).css({ rotate: rotation, top: position });
 }
 
 function gameloop() {
