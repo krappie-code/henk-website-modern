@@ -251,6 +251,52 @@
     // Initialize intersection observer after DOM load
     setTimeout(setupIntersectionObserver, 100);
 
+    // Enhanced timeline animations for experience section
+    function setupTimelineAnimations() {
+        const timelineItems = document.querySelectorAll('.experience-item');
+        
+        if (timelineItems.length === 0) return;
+
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0) scale(1)';
+                    }, index * 150); // Stagger the animations
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        timelineItems.forEach((item, index) => {
+            // Set initial state
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(50px) scale(0.95)';
+            item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            
+            timelineObserver.observe(item);
+        });
+    }
+
+    // Initialize timeline animations
+    setTimeout(setupTimelineAnimations, 200);
+
+    // Enhanced smooth scrolling for better UX
+    function enhanceScrolling() {
+        // Add smooth scroll behavior to the entire document
+        document.documentElement.style.scrollBehavior = 'smooth';
+        
+        // Respect user's motion preferences
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.style.scrollBehavior = 'auto';
+        }
+    }
+
+    enhanceScrolling();
+
     // Error handling
     window.addEventListener('error', function(e) {
         console.warn('Website error:', e.message);
