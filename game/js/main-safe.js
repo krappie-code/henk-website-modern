@@ -68,11 +68,11 @@ function initializeAudio() {
    if (soundJump !== null) return; // Already initialized
    
    try {
-      soundJump = new buzz.sound("game/assets/sounds/sfx_wing.ogg");
-      soundScore = new buzz.sound("game/assets/sounds/sfx_point.ogg");
-      soundHit = new buzz.sound("game/assets/sounds/sfx_hit.ogg");
-      soundDie = new buzz.sound("game/assets/sounds/sfx_die.ogg");
-      soundSwoosh = new buzz.sound("game/assets/sounds/sfx_swooshing.ogg");
+      soundJump = new buzz.sound("assets/sounds/sfx_wing.ogg");
+      soundScore = new buzz.sound("assets/sounds/sfx_point.ogg");
+      soundHit = new buzz.sound("assets/sounds/sfx_hit.ogg");
+      soundDie = new buzz.sound("assets/sounds/sfx_die.ogg");
+      soundSwoosh = new buzz.sound("assets/sounds/sfx_swooshing.ogg");
       
       // Set volume for all sounds
       if (buzz && buzz.all) {
@@ -386,7 +386,7 @@ function setBigScore(erase)
 
    var digits = score.toString().split('');
    for(var i = 0; i < digits.length; i++)
-      elemscore.append("<img src='game/assets/font_big_" + digits[i] + ".png' alt='" + digits[i] + "'>"); 
+      elemscore.append("<img src='assets/font_big_" + digits[i] + ".png' alt='" + digits[i] + "'>"); 
 }
 
 function setSmallScore()
@@ -396,7 +396,7 @@ function setSmallScore()
 
    var digits = score.toString().split('');
    for(var i = 0; i < digits.length; i++)
-      elemscore.append("<img src='game/assets/font_small_" + digits[i] + ".png' alt='" + digits[i] + "'>");
+      elemscore.append("<img src='assets/font_small_" + digits[i] + ".png' alt='" + digits[i] + "'>");
 }
 
 function setHighScore()
@@ -406,7 +406,7 @@ function setHighScore()
 
    var digits = highscore.toString().split('');
    for(var i = 0; i < digits.length; i++)
-      elemscore.append("<img src='game/assets/font_small_" + digits[i] + ".png' alt='" + digits[i] + "'>");
+      elemscore.append("<img src='assets/font_small_" + digits[i] + ".png' alt='" + digits[i] + "'>");
 }
 
 function setMedal()
@@ -427,7 +427,7 @@ function setMedal()
    if(score >= 40)
       medal = "platinum";
 
-   elemmedal.append('<img src="game/assets/medal_' + medal +'.png" alt="' + medal +'">');
+   elemmedal.append('<img src="assets/medal_' + medal +'.png" alt="' + medal +'">');
 
    //signal that a medal has been won
    return true;
