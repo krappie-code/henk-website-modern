@@ -859,6 +859,7 @@ section {
 }
 
 .footer-game {
+    margin-top: calc(-1 * var(--space-20));
     margin-bottom: var(--space-8);
     text-align: center;
     /* Let game fill full footer width */
